@@ -30,13 +30,15 @@ public class ObrasEntity {
     @Column(name = "descricao", length = 240)
     private String descricao;
 
-
     @Column(name = "data_publicacao", nullable = false)
     private LocalDate data_publicacao;
 
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autores_id", referencedColumnName = "id")
-    private List<AutoresEntity> autoresEntities;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable (
+            name = "tabela_ligacao",
+            joinColumns = @JoinColumn (name = "obras_id"),
+            inverseJoinColumns = @JoinColumn(name = "autores_id")
+    )
+    private List<AutoresEntity> autores;
 
 }

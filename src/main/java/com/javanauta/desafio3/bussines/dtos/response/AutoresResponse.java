@@ -10,7 +10,6 @@ public record AutoresResponse (Long id,
                               String email,
                               LocalDate data_nascimento,
                               String pais_origem,
-                              String cpf,
-                              List<ObrasEntity> obrasEntities) {
+                              String cpf) {
 }
 

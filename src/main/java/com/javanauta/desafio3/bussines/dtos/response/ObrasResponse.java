@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public record ObrasResponse (Long id, String nome, String descricao,
-                             LocalDate data_publicacao, List<AutoresEntity> autoresEntities ){
+                             LocalDate data_publicacao, List<AutoresResponse> autores ){
 }
 
 

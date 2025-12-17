@@ -2,6 +2,8 @@ package com.javanauta.desafio3.infrasctruture.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,20 +31,20 @@ public class AutoresEntity {
     @Column(name = "sexo")
     private String sexo;
 
+    @Email(message = "Por favor insira um email valido")
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+    @Past(message = "A data de nascimento deve ser no passado")
     @Column(name = "data_nascimento")
     private LocalDate data_nascimento;
 
-    @Column(name = "pais_origem")
+    @Column(name = "pais_origem", nullable = false)
     private String pais_origem;
 
     @Column(name = "cpf", unique = true)
     private String cpf;
 
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "obras_id", referencedColumnName = "id")
-    private List<ObrasEntity> obrasEntity;
+    @ManyToMany(mappedBy = "autores")
+    private List<ObrasEntity> obras;
 }
