@@ -3,8 +3,12 @@ package com.javanauta.desafio3.controller;
 import com.javanauta.desafio3.bussines.dtos.requests.AutoresRequest;
 import com.javanauta.desafio3.bussines.dtos.response.AutoresResponse;
 import com.javanauta.desafio3.bussines.services.AutorService;
+import com.javanauta.desafio3.infrasctruture.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +19,21 @@ import java.util.List;
 public class AutorController {
 
     private final AutorService service;
+    private final JwtUtil jwtUtil;
+    private final AuthenticationManager authenticationManager;
+
+    @PostMapping("/login")
+    public String login (@RequestBody AutoresRequest request){
+
+        Authentication authentication = authenticationManager.authenticate(
+
+                new UsernamePasswordAuthenticationToken(
+                        request.email(),request.cpf()));
+
+        return "Bearer " +jwtUtil.generateToken(authentication.getName());
+    }
+
+
 
     @PostMapping
     public ResponseEntity<AutoresResponse> criarAutor(@RequestBody AutoresRequest request){

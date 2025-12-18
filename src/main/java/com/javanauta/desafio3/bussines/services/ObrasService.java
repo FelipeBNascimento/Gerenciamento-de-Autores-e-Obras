@@ -10,6 +10,7 @@ import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
 import com.javanauta.desafio3.infrasctruture.repositories.AutoresRepository;
 import com.javanauta.desafio3.infrasctruture.repositories.ObrasRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ObrasService {
     private final MapperUpdate mapperUpdate;
     private final AutoresRepository autoresRepository;
     private final AutorService autorService;
+    private final PasswordEncoder encoder;
 
 
     public ObrasResponse cadastraObra(ObrasEntity obras) {
@@ -38,6 +40,8 @@ public class ObrasService {
         for (AutoresEntity autores : listaAutores){
 
             autorService.verificarOrigem(autores);
+            // converter o vpf em um hash estou considerando cpf como senha
+            autores.setCpf(encoder.encode(autores.getCpf()));
         }
 
 

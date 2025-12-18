@@ -12,7 +12,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface MapperUpdate {
 
-    AutoresEntity atualizarDtoResponse(AutoresRequest request, @MappingTarget AutoresEntity entity);
+    AutoresEntity atualizarAutorParaEntity(AutoresRequest request, @MappingTarget AutoresEntity entity);
 
     void atualizarDtoObrasResponse(ObrasResponse dto, @MappingTarget ObrasEntity entity);
 
