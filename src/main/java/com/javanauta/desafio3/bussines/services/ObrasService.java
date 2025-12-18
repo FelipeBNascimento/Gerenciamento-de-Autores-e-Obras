@@ -3,10 +3,10 @@ package com.javanauta.desafio3.bussines.services;
 import com.javanauta.desafio3.bussines.converter.Mapper;
 import com.javanauta.desafio3.bussines.converter.MapperUpdate;
 import com.javanauta.desafio3.bussines.dtos.response.ObrasResponse;
-import com.javanauta.desafio3.infrasctruture.exceptions.EmailExistente;
-import com.javanauta.desafio3.infrasctruture.exceptions.IdNaoEncontrado;
 import com.javanauta.desafio3.infrasctruture.entities.AutoresEntity;
 import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
+import com.javanauta.desafio3.infrasctruture.exceptions.EmailExistente;
+import com.javanauta.desafio3.infrasctruture.exceptions.IdNaoEncontrado;
 import com.javanauta.desafio3.infrasctruture.repositories.AutoresRepository;
 import com.javanauta.desafio3.infrasctruture.repositories.ObrasRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,7 +41,7 @@ public class ObrasService {
 
             autorService.verificarOrigem(autores);
             // converter o vpf em um hash estou considerando cpf como senha
-            autores.setCpf(encoder.encode(autores.getCpf()));
+            autores.setSenha(encoder.encode(autores.getSenha()));
         }
 
 

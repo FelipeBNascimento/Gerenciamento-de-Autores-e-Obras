@@ -51,7 +51,7 @@ public class JwtUtil {
 
     // Valida o token JWT verificando o nome de autor e se o token não está expirado
     public boolean validateToken(String token, String username) {
-        // Extrai o nome de usuário do token
+        // Extrai o nome de autor do token
         final String extractedUsername = extraiToken(token);
         // Verifica se o nome de autor do token corresponde ao fornecido e se o token não está expirado
         return (extractedUsername.equals(username) && !isTokenExpired(token));

@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Cria e retorna um objeto UserDetails com base no autor encontrado
         return org.springframework.security.core.userdetails.User
                 .withUsername(autor.getEmail()) // Define o nome de autor como o e-mail
-                .password(autor.getCpf()) // Define a senha como o cpf do autor
+                .password(autor.getSenha()) // Define a senha como o o campo senha do autor
                 .build(); // Constrói o objeto UserDetails
     }
 }

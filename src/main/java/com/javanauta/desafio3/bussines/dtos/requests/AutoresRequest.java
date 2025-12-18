@@ -7,6 +7,7 @@ public record AutoresRequest  (String nome,
                                String email,
                                LocalDate data_nascimento,
                                String pais_origem,
-                               String cpf) {
+                               String cpf,
+                               String senha) {
 }
 

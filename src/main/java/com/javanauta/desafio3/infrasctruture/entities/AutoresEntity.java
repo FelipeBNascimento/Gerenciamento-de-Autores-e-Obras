@@ -49,6 +49,9 @@ public class AutoresEntity implements UserDetails {
     @Column(name = "cpf", unique = true)
     private String cpf;
 
+    @Column(name = "senha")
+    private String senha;
+
     @ManyToMany(mappedBy = "autores")
     private List<ObrasEntity> obras;
 

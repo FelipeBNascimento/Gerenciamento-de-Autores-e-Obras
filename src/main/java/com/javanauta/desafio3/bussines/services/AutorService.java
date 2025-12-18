@@ -9,8 +9,6 @@ import com.javanauta.desafio3.infrasctruture.entities.AutoresEntity;
 import com.javanauta.desafio3.infrasctruture.exceptions.CPFObrigatorio;
 import com.javanauta.desafio3.infrasctruture.exceptions.IdNaoEncontrado;
 import com.javanauta.desafio3.infrasctruture.repositories.AutoresRepository;
-import com.javanauta.desafio3.infrasctruture.security.JwtUtil;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +25,6 @@ public class AutorService {
     private final AutoresRepository autoresRepository;
     private final Mapper mapper;
     private final MapperUpdate mapperUpdate;
-    private final JwtUtil jwtUtil;
     private final PasswordEncoder encoder;
 
 
@@ -41,8 +38,8 @@ public class AutorService {
         // verificar a origem fazendo a logica de negocio
         verificarOrigem(entity);
 
-        // converter o vpf em um hash estou considerando cpf como senha
-        entity.setCpf(encoder.encode(entity.getCpf()));
+        // converter a senha em um hash
+        entity.setSenha(encoder.encode(entity.getSenha()));
 
         // salvar no banco de daods novo autor
         AutoresEntity usuarioSalvar =  autoresRepository.save(entity);

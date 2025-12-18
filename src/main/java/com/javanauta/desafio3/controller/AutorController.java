@@ -28,7 +28,7 @@ public class AutorController {
         Authentication authentication = authenticationManager.authenticate(
 
                 new UsernamePasswordAuthenticationToken(
-                        request.email(),request.cpf()));
+                        request.email(),request.senha()));
 
         return "Bearer " +jwtUtil.generateToken(authentication.getName());
     }
