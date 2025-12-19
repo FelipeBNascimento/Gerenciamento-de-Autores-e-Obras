@@ -1,9 +1,9 @@
-package com.javanauta.desafio3.bussines.converter;
+package com.javanauta.desafio3.business.converter;
 
-import com.javanauta.desafio3.bussines.dtos.requests.AutoresRequest;
-import com.javanauta.desafio3.bussines.dtos.requests.ObrasRequests;
-import com.javanauta.desafio3.bussines.dtos.response.AutoresResponse;
-import com.javanauta.desafio3.bussines.dtos.response.ObrasResponse;
+import com.javanauta.desafio3.business.dtos.requests.AutoresRequest;
+import com.javanauta.desafio3.business.dtos.requests.ObrasRequests;
+import com.javanauta.desafio3.business.dtos.response.AutoresResponse;
+import com.javanauta.desafio3.business.dtos.response.ObrasResponse;
 import com.javanauta.desafio3.infrasctruture.entities.AutoresEntity;
 import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
 

@@ -1,10 +1,10 @@
-package com.javanauta.desafio3.bussines.services;
+package com.javanauta.desafio3.business.services;
 
 
-import com.javanauta.desafio3.bussines.converter.Mapper;
-import com.javanauta.desafio3.bussines.converter.MapperUpdate;
-import com.javanauta.desafio3.bussines.dtos.requests.AutoresRequest;
-import com.javanauta.desafio3.bussines.dtos.response.AutoresResponse;
+import com.javanauta.desafio3.business.converter.Mapper;
+import com.javanauta.desafio3.business.converter.MapperUpdate;
+import com.javanauta.desafio3.business.dtos.requests.AutoresRequest;
+import com.javanauta.desafio3.business.dtos.response.AutoresResponse;
 import com.javanauta.desafio3.infrasctruture.entities.AutoresEntity;
 import com.javanauta.desafio3.infrasctruture.exceptions.CPFObrigatorio;
 import com.javanauta.desafio3.infrasctruture.exceptions.IdNaoEncontrado;

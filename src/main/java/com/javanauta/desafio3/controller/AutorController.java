@@ -1,8 +1,8 @@
 package com.javanauta.desafio3.controller;
 
-import com.javanauta.desafio3.bussines.dtos.requests.AutoresRequest;
-import com.javanauta.desafio3.bussines.dtos.response.AutoresResponse;
-import com.javanauta.desafio3.bussines.services.AutorService;
+import com.javanauta.desafio3.business.dtos.requests.AutoresRequest;
+import com.javanauta.desafio3.business.dtos.response.AutoresResponse;
+import com.javanauta.desafio3.business.services.AutorService;
 import com.javanauta.desafio3.infrasctruture.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

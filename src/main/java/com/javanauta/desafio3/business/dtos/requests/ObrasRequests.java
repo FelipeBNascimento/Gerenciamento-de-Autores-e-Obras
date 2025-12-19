@@ -1,4 +1,4 @@
-package com.javanauta.desafio3.bussines.dtos.requests;
+package com.javanauta.desafio3.business.dtos.requests;
 
 import java.time.LocalDate;
 import java.util.List;

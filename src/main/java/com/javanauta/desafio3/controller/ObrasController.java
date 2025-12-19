@@ -1,7 +1,8 @@
 package com.javanauta.desafio3.controller;
 
-import com.javanauta.desafio3.bussines.dtos.response.ObrasResponse;
-import com.javanauta.desafio3.bussines.services.ObrasService;
+import com.javanauta.desafio3.business.dtos.requests.ObrasRequests;
+import com.javanauta.desafio3.business.dtos.response.ObrasResponse;
+import com.javanauta.desafio3.business.services.ObrasService;
 import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class ObrasController {
 
 
     @PostMapping
-    public ResponseEntity<ObrasResponse> cadastraObras(@RequestBody ObrasEntity obras){
+    public ResponseEntity<ObrasResponse> cadastraObras(@RequestBody ObrasRequests obras){
 
         service.cadastraObra(obras);
 

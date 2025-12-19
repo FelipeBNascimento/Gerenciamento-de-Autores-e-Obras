@@ -1,7 +1,5 @@
-package com.javanauta.desafio3.bussines.dtos.response;
-import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
+package com.javanauta.desafio3.business.dtos.response;
 import java.time.LocalDate;
-import java.util.List;
 
 
 public record AutoresResponse (Long id,

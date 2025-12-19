@@ -1,8 +1,9 @@
-package com.javanauta.desafio3.bussines.services;
+package com.javanauta.desafio3.business.services;
 
-import com.javanauta.desafio3.bussines.converter.Mapper;
-import com.javanauta.desafio3.bussines.converter.MapperUpdate;
-import com.javanauta.desafio3.bussines.dtos.response.ObrasResponse;
+import com.javanauta.desafio3.business.converter.Mapper;
+import com.javanauta.desafio3.business.converter.MapperUpdate;
+import com.javanauta.desafio3.business.dtos.requests.ObrasRequests;
+import com.javanauta.desafio3.business.dtos.response.ObrasResponse;
 import com.javanauta.desafio3.infrasctruture.entities.AutoresEntity;
 import com.javanauta.desafio3.infrasctruture.entities.ObrasEntity;
 import com.javanauta.desafio3.infrasctruture.exceptions.EmailExistente;
@@ -28,7 +29,10 @@ public class ObrasService {
     private final PasswordEncoder encoder;
 
 
-    public ObrasResponse cadastraObra(ObrasEntity obras) {
+    public ObrasResponse cadastraObra(ObrasRequests obrasRequests) {
+
+        // convertendo a request para uma entity
+        ObrasEntity obras = mapper.obrasEntity(obrasRequests);
 
         // criando uma lista para depois verificar de autores
         List<AutoresEntity> listaAutores = obras.getAutores();
@@ -37,7 +41,7 @@ public class ObrasService {
         verificandoAutor(listaAutores);
 
         // verificando a origem do autores
-        for (AutoresEntity autores : listaAutores){
+        for (AutoresEntity autores : listaAutores) {
 
             autorService.verificarOrigem(autores);
             // converter o vpf em um hash estou considerando cpf como senha
@@ -49,7 +53,7 @@ public class ObrasService {
         return mapper.obrasResponse(repository.save(obras));
     }
 
-    public ObrasResponse cadastrarObrasComAutorExistente(ObrasEntity obras, Long id){
+    public ObrasResponse cadastrarObrasComAutorExistente(ObrasEntity obras, Long id) {
 
         // Buscando autor pelo id
         AutoresEntity autor = buscarAutorpeloId(id);
@@ -86,10 +90,10 @@ public class ObrasService {
     }
 
     // metodo criado para buscar um autor
-    public AutoresEntity buscarAutorpeloId(Long id){
+    public AutoresEntity buscarAutorpeloId(Long id) {
 
         return autoresRepository.findById(id).orElseThrow(
-                ()-> new IdNaoEncontrado("Id não encontrado")
+                () -> new IdNaoEncontrado("Id não encontrado")
         );
     }
 
@@ -105,7 +109,7 @@ public class ObrasService {
     }
 
     // apagar a obra do sistema
-    public void apagarObraPeloId(Long id){
+    public void apagarObraPeloId(Long id) {
 
         repository.deleteById(id);
     }
